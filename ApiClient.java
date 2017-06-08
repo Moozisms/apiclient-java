@@ -16,12 +16,16 @@ public class ApiClient {
 
         String targetURL = "http://api.moozisms.com";//?api_key=123456&api_secret=123456&to=22892520119&from=MOM&text=cc ici&datatype=json";
         try {
-            String api_key = "123456";
+
+            // Replace default data with your own information
+            
+
+            String api_key = "123456"; 
             String api_secret = "123456";
-            String to = "22890286201";
-            String from = "MOOZISMS"; // 11 caracteres au maximum
-            String text = "Ceci est un sms test de la plateforme de MOOZISMS";
-            String datatype = "json";  //String datatype = "xml";
+            String to = "22890286201"; // phonenumber of the recipient with code without 00 or +
+            String from = "MOOZISMS"; // sender ID less than 11 characters
+            String text = "Hello John Doe"; //Your messages without the special characters
+            String datatype = "json";  //String datatype = "xml"; or datatype="json"
             String urlParameters = "api_key="+api_key+
                     "&api_secret="+api_secret+
                     "&to="+to+
@@ -29,7 +33,7 @@ public class ApiClient {
                     "&text="+text+
                     "&datatype="+datatype; 
             System.out.println("param "+urlParameters);
-            //String params = "api_key=123456&api_secret=123456&to=22892520119&from=MOM&text=cc ici&datatype=json";
+           
             byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
             int postDataLength = postData.length;
             URL restServiceURL = new URL(targetURL);
@@ -61,7 +65,7 @@ public class ApiClient {
                 //System.out.println(buffLine);
                 output += buffLine;
             }
-            System.out.println("Response du serveur : \n"+output);
+            System.out.println("Response from server : \n"+output);
             httpConnection.disconnect();
 
         } catch (MalformedURLException e) {
